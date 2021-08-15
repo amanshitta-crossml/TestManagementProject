@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{%  block title %}
+	index
+{% endblock %} 
+
+{%  block body %} 
+	<ul>
+	{% for sub in groups %}
+
+		<li> <a href="/test/{{sub.id}}/" >{{sub}} </a></li>
+	{% endfor %}
+	</ul>
+{% endblock %}

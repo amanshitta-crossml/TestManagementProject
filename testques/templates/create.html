@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{%  block title %} Create {% endblock %}
+
+{% block style %}
+<style type="text/css">
+	form{
+		margin: 20px;
+	}
+	input{
+		margin: 20px ;
+	}
+</style>
+{% endblock %}
+
+
+{%  block body %} 
+{% if error %}
+
+
+{{error}}
+
+{%else%}
+<form action="/test/create/" method="POST">
+	{% csrf_token %}
+	<label for="ques_text">Question</label>
+	<input type="text" name="ques_text"><br>
+	<label>Options : </label><br>
+	<input type="text" name="op1">
+	<input type="text" name="op2">
+	<input type="text" name="op3">
+	<input type="text" name="op4"><br>
+	<br>
+	 <label for="group">Choose a group:</label>
+	<select name="group">
+	{% for group_name in groups %}
+	  <option value="{{group_name}}">{{group_name}}</option>
+	{% endfor %}
+	  
+</select> 
+	<p> *The question can be grouped from admin panel </p>
+	<input type="submit" name="Submit" value="Generate">
+</form>
+{% endif %}
+{% endblock %}
+

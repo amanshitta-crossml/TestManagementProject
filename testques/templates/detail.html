@@ -7,15 +7,17 @@
 {%  block body %} 
 	<ul>
 		{{group}}
-	{% for question in question_qs %}
+
+
+	{% for ques in group.question.all %}
 	<hr>
-		<li style="list-style-type: none;">Q : {{question.question_text}}</li>
+		<li style="list-style-type: none;">Q : {{ques.question_text}}</li>
 		
 		<form action="#" method="POST">
 			{% csrf_token %}
 		<label for="op_id">Choose an option:</label>
 		<select name="op_id" style="background-color: blue; margin: 30px;">
-		{% for option in question.option_set.all %}
+		{% for option in ques.option_set.all %}
 			<option class="bt-op" value="{{option.id}}">{{option.option_text}}</option>
 		{% endfor %}
 			

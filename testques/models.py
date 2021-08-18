@@ -23,6 +23,8 @@ class Option(models.Model):
 	"""
 	question = models.ForeignKey(Question, on_delete=models.CASCADE)
 	option_text = models.CharField(max_length=200)
+	selected_count = models.IntegerField(default=0)
+
 
 	def __str__(self):
 		"""
